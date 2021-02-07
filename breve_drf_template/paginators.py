@@ -1,0 +1,1 @@
+# this file is for the paginators class, of indexing pages
