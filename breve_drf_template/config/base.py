@@ -24,9 +24,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
     
     # extra apps 
-    'breve_drf_template.apps.User.apps',
+    'breve_drf_template.apps.Employee.apps.EmployeeConfig',
 ]
 
 MIDDLEWARE = [
