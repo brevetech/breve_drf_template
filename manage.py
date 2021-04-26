@@ -3,10 +3,18 @@
 import os
 import sys
 
+import environ
+
+root = environ.Path(start=__file__) - 1
+env = environ.Env()
+env.read_env('.env')
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'breve_drf_template.settings.dev')
+    if env.bool("DEBUG"):
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
+    else:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

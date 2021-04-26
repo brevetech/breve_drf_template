@@ -11,6 +11,7 @@ gunicorn = "*"
 pillow = "*"
 drf-yasg = "*"
 swagger-spec-validator = "*"
+django-environ = "*"
 
 [dev-packages]
 

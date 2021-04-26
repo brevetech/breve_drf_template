@@ -3,16 +3,24 @@ from pathlib import Path
 import os
 import sys
 
+import environ
+
+root = environ.Path(start=__file__) - 3
+env = environ.Env()
+env.read_env('.env')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = root()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@3$y5bdhy(elmfe_15kbs-dm2(riu-@%yrj29yxi(*g@7hq++&'
+SECRET_KEY = env('SECRET_KEY')
 
+#DEBUG config
+DEBUG = env.bool('DEBUG', default=True)
 
 # Application definition
 
@@ -46,7 +54,7 @@ ROOT_URLCONF = 'breve_drf_template.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [root('templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,4 +101,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
- 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    root('static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets-root', 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets-root', 'media')
