@@ -1,0 +1,1 @@
+Put served static files (e.g js or css) here
