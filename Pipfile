@@ -10,6 +10,7 @@ djangorestframework-simplejwt = "*"
 gunicorn = "*"
 pillow = "*"
 drf-yasg = "*"
+swagger-spec-validator = "*"
 
 [dev-packages]
 

@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-# from src.apps.Employee.models import EmployeeModel
+# from breve_drf_template.apps.Employee.models import EmployeeModel
 
 
 class UserConfig(AppConfig): 
@@ -8,5 +8,5 @@ class UserConfig(AppConfig):
 
 
 class EmployeeConfig(AppConfig):
-    name = 'src.apps.Employee'
+    name = 'breve_drf_template.apps.Employee'
     verbose_name = 'Empleados'

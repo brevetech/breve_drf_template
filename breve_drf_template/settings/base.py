@@ -24,11 +24,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # drf dependency apps
     'rest_framework',
-    
-    # extra apps 
-    'src.apps.Employee.apps.EmployeeConfig',
+    'drf_yasg',
+    # project apps
+    'breve_drf_template.apps.Employee.apps.EmployeeConfig',
 ]
 
 MIDDLEWARE = [
@@ -41,7 +41,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'src.urls'
+ROOT_URLCONF = 'breve_drf_template.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'src.wsgi.application'
+WSGI_APPLICATION = 'breve_drf_template.wsgi.application'
 
 
 # Password validation

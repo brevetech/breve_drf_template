@@ -1,5 +1,5 @@
 """
-ASGI config for src project.
+ASGI settings for breve_drf_template project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'breve_drf_template.settings')
 
 application = get_asgi_application()
