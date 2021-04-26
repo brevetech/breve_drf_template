@@ -1,4 +1,6 @@
-from django.core.files.storage import default_storage
+from django.conf import settings
+
+root = settings.BASE_DIR
 
 
 def read_docs_md(filename):
@@ -11,7 +13,7 @@ def read_docs_md(filename):
             file_content (str): the content of the md file, None if not found
     """
     try:
-        f = default_storage.open(f"docs/apidocs/{filename}.md")
-        return f.read().decode("utf-8")
+        f = open(f"{root}/docs/apidocs/{filename}.md", "r")
+        return f.read()
     except FileNotFoundError:
         return None
