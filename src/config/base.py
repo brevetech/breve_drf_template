@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     
     # extra apps 
-    'breve_drf_template.apps.Employee.apps.EmployeeConfig',
+    'src.apps.Employee.apps.EmployeeConfig',
 ]
 
 MIDDLEWARE = [
@@ -41,7 +41,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'breve_drf_template.urls'
+ROOT_URLCONF = 'src.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'breve_drf_template.wsgi.application'
+WSGI_APPLICATION = 'src.wsgi.application'
 
 
 # Password validation

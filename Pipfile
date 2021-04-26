@@ -9,6 +9,7 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 gunicorn = "*"
 pillow = "*"
+drf-yasg = "*"
 
 [dev-packages]
 

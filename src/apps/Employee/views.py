@@ -5,10 +5,10 @@ from rest_framework import viewsets, filters, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
-from breve_drf_template.paginators import DefaultPagination
-from breve_drf_template.apps.Employee.models import EmployeeModel
-from breve_drf_template.apps.Employee.serializers import EmployeeSerializer
+from src.apps.Common.Errors.serializer import ErrorSerializer
+from src.paginators import DefaultPagination
+from src.apps.Employee.models import EmployeeModel
+from src.apps.Employee.serializers import EmployeeSerializer
 
 logger = logging.getLogger('watchtower-logger')
 

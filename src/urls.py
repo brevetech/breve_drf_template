@@ -2,9 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from breve_drf_template.apps.Employee.views import EmployeeView, EmployeeAuthenticatedView
+from src.apps.Employee.views import EmployeeView, EmployeeAuthenticatedView
 
 router = routers.DefaultRouter()
+# swagger path
+
+
 # Employee pahts
 router.register(r'employee', EmployeeView)
 

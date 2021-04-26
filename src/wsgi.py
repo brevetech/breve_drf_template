@@ -1,5 +1,5 @@
 """
-WSGI config for breve_drf_template project.
+WSGI config for src project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'breve_drf_template.config.dev')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.config.dev')
 
 application = get_wsgi_application()
