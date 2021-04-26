@@ -6,6 +6,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework import routers, permissions
 
 from breve_drf_template.apps.Employee.views import EmployeeView, EmployeeAuthenticatedView
+from breve_drf_template.util import read_docs_md
 
 router = routers.DefaultRouter()
 # swagger path
@@ -13,10 +14,10 @@ schema_view = get_schema_view(
     openapi.Info(
         title='Service Breve OpenAPI',
         default_version='v1.0',
-        description='# Hola a todos',
+        description=read_docs_md("index"),
         contact=Contact(
             name='Brevetech AS. (Team Mango 🥭)',
-            email='team_mango.dev@brevetech.com',
+            email='teammango.dev@brevetech.com',
             url='https://brevetech.com')
     ),
     public=True,

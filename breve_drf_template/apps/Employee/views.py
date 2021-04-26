@@ -10,6 +10,7 @@ from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
 from breve_drf_template.apps.Employee.models import EmployeeModel
 from breve_drf_template.apps.Employee.serializers import EmployeeSerializer
 from breve_drf_template.paginators import DefaultPagination
+from breve_drf_template.util import read_docs_md
 
 logger = logging.getLogger('watchtower-logger')
 
@@ -31,16 +32,14 @@ directly above of the desired method, without the name param
 # remember use method_decorator for detailed documentation
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
-    operation_description='# Get Employee List\n'
-                          'Get employees listed and optionally filtered',
+    operation_description=read_docs_md('endpoints/employee/list'),
     responses={
         200: EmployeeSerializer(many=True),
         400: ErrorSerializer()
     }
 ))
 @method_decorator(name='retrieve', decorator=swagger_auto_schema(
-    operation_description='# Get Employee by ID\n'
-                          'Get employee data by its ID',
+    operation_description=read_docs_md('endpoints/employee/retrieve'),
     responses={
         200: EmployeeSerializer(many=False),
         400: ErrorSerializer()
@@ -58,8 +57,7 @@ class EmployeeView(viewsets.ModelViewSet):
 class EmployeeAuthenticatedView(APIView):
 
     @method_decorator(decorator=swagger_auto_schema(
-        operation_description='# Get Current User Data\n'
-                              'Get current session user full data. *JWT authentication header required*',
+        operation_description=read_docs_md('endpoints/employee/current_auth'),
         responses={
             200: EmployeeSerializer(many=False),
             400: ErrorSerializer()
