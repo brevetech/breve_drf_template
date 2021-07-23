@@ -2,7 +2,6 @@ import logging
 
 from django.utils.decorators import method_decorator
 from drf_spectacular.utils import extend_schema
-from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
 from rest_framework.response import Response
 

@@ -5,6 +5,8 @@ import sys
 
 import environ
 
+from breve_drf_template.util import read_docs_md
+
 root = environ.Path(start=__file__) - 3
 env = environ.Env()
 env.read_env('.env')
@@ -34,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # drf dependency apps
     'rest_framework',
-    'drf_yasg',
     'drf_spectacular',
     # project apps
     'breve_drf_template.apps.Employee.apps.EmployeeConfig',
@@ -49,8 +50,15 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Breve Rest Template',
-    'DESCRIPTION': 'yes',
+    'DESCRIPTION': read_docs_md('index', BASE_DIR),
     'VERSION': 'v1.0.0',
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+    },
+    # available SwaggerUI versions: https://github.com/swagger-api/swagger-ui/releases
+    "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@4.0.0-beta.0", # default
     # OTHER SETTINGS
 }
 

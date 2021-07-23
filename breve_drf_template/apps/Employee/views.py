@@ -2,10 +2,7 @@ import logging
 
 from django.utils.decorators import method_decorator
 from drf_spectacular.utils import extend_schema
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, filters, status
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import viewsets, filters
 
 from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
 from breve_drf_template.apps.Employee.models import EmployeeModel
