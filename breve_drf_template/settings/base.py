@@ -35,9 +35,24 @@ INSTALLED_APPS = [
     # drf dependency apps
     'rest_framework',
     'drf_yasg',
+    'drf_spectacular',
     # project apps
     'breve_drf_template.apps.Employee.apps.EmployeeConfig',
 ]
+
+# RestAPI config
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 15,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Breve Rest Template',
+    'DESCRIPTION': 'yes',
+    'VERSION': 'v1.0.0',
+    # OTHER SETTINGS
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

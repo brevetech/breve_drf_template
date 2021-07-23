@@ -13,6 +13,7 @@ drf-yasg = "*"
 swagger-spec-validator = "*"
 django-environ = "*"
 serializers = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 

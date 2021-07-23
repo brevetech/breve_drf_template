@@ -1,9 +1,9 @@
 
 def list_locations():
-    '''
+    """
     Returns dummy data to simulate a list query
     :return: Locations list dummy data
-    '''
+    """
     return [
         {'name': 'Place 1', 'type': 'some', 'description': 'First Place'},
         {'name': 'Place 2', 'type': 'any', 'description': 'Second Place'},

@@ -1,6 +1,7 @@
 import logging
 
 from django.utils.decorators import method_decorator
+from drf_spectacular.utils import extend_schema
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -27,9 +28,9 @@ directly above of the desired method, without the name param
 """
 
 
-@method_decorator(name='list', decorator=swagger_auto_schema(
-    operation_summary="Location list",
-    operation_description=read_docs_md('endpoints/core/list'),
+@method_decorator(name='list', decorator=extend_schema(
+    summary="Location list",
+    description=read_docs_md('endpoints/core/list'),
     responses={
         200: LocationSerializer(many=True),
         400: ErrorSerializer(),
@@ -37,9 +38,10 @@ directly above of the desired method, without the name param
     }
 ))
 class LocationViewSet(viewsets.ViewSet):
-    '''
+    """
     Locations views
-    '''
+    """
+
     def list(self, request):
         query = list_locations()
         serializer = LocationSerializer(query, many=True)

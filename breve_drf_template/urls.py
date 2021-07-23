@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from drf_yasg import openapi
 from drf_yasg.openapi import Contact
 from drf_yasg.views import get_schema_view
 from rest_framework import routers, permissions
 
-from breve_drf_template.apps.Employee.views import EmployeeView, EmployeeAuthenticatedView
+from breve_drf_template.apps.Employee.views import EmployeeView
 from breve_drf_template.apps.core.views import LocationViewSet
 from breve_drf_template.util import read_docs_md
 
@@ -32,9 +33,9 @@ router.register(r'employee', EmployeeView)
 router.register(r'locations', LocationViewSet, basename='locations')
 
 urlpatterns = [
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # set openapi docs as home
-    path('', schema_view.with_ui('swagger', cache_timeout = 0)),
+    path('', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/current_user', EmployeeAuthenticatedView.as_view()),
 ]

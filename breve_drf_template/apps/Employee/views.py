@@ -1,6 +1,7 @@
 import logging
 
 from django.utils.decorators import method_decorator
+from drf_spectacular.utils import extend_schema
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, filters, status
 from rest_framework.response import Response
@@ -31,15 +32,15 @@ directly above of the desired method, without the name param
 
 # remember use method_decorator for detailed documentation
 
-@method_decorator(name='list', decorator=swagger_auto_schema(
-    operation_description=read_docs_md('endpoints/employee/list'),
+@method_decorator(name='list', decorator=extend_schema(
+    description=read_docs_md('endpoints/employee/list'),
     responses={
         200: EmployeeSerializer(many=True),
         400: ErrorSerializer()
     }
 ))
-@method_decorator(name='retrieve', decorator=swagger_auto_schema(
-    operation_description=read_docs_md('endpoints/employee/retrieve'),
+@method_decorator(name='retrieve', decorator=extend_schema(
+    description=read_docs_md('endpoints/employee/retrieve'),
     responses={
         200: EmployeeSerializer(many=False),
         400: ErrorSerializer()
@@ -53,22 +54,3 @@ class EmployeeView(viewsets.ModelViewSet):
     http_method_names = ['get']
     pagination_class = DefaultPagination
 
-
-class EmployeeAuthenticatedView(APIView):
-
-    @method_decorator(decorator=swagger_auto_schema(
-        operation_description=read_docs_md('endpoints/employee/current_auth'),
-        responses={
-            200: EmployeeSerializer(many=False),
-            400: ErrorSerializer()
-        }
-    ))
-    def get(self, request):
-        try:
-            employee = EmployeeModel.objects.get(user=request.user)
-        except:
-            error = ErrorSerializer()
-            error.set_data(status.HTTP_404_NOT_FOUND, 'El usuario actual no cuenta con un perfil')
-            return Response(error.get_data(),
-                            status=status.HTTP_404_NOT_FOUND)
-        return Response(EmployeeSerializer(employee).data)
