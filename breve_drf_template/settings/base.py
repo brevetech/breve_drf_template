@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     # project apps
-    'breve_drf_template.apps.Employee.apps.EmployeeConfig',
+    'breve_drf_template.apps.employee.apps.EmployeeConfig',
 ]
 
 # RestAPI config

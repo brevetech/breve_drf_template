@@ -5,8 +5,8 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets, filters
 
 from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
-from breve_drf_template.apps.Employee.models import EmployeeModel
-from breve_drf_template.apps.Employee.serializers import EmployeeSerializer
+from breve_drf_template.apps.employee.models import EmployeeModel
+from breve_drf_template.apps.employee.serializers import EmployeeSerializer
 from breve_drf_template.paginators import DefaultPagination
 from breve_drf_template.util import read_docs_md
 

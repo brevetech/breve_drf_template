@@ -3,13 +3,13 @@ from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework import routers, permissions
 
-from breve_drf_template.apps.Employee.views import EmployeeView
+from breve_drf_template.apps.employee.views import EmployeeView
 from breve_drf_template.apps.core.views import LocationViewSet
 from breve_drf_template.util import read_docs_md
 
 router = routers.DefaultRouter()
 
-# Employee pahts
+# employee pahts
 router.register(r'employee', EmployeeView)
 # Core paths
 router.register(r'locations', LocationViewSet, basename='locations')
