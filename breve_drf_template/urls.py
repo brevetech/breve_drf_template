@@ -6,6 +6,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework import routers, permissions
 
 from breve_drf_template.apps.Employee.views import EmployeeView, EmployeeAuthenticatedView
+from breve_drf_template.apps.core.views import LocationViewSet
 from breve_drf_template.util import read_docs_md
 
 router = routers.DefaultRouter()
@@ -27,6 +28,8 @@ schema_view = get_schema_view(
 
 # Employee pahts
 router.register(r'employee', EmployeeView)
+# Core paths
+router.register(r'locations', LocationViewSet, basename='locations')
 
 urlpatterns = [
     # set openapi docs as home

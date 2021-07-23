@@ -12,6 +12,7 @@ pillow = "*"
 drf-yasg = "*"
 swagger-spec-validator = "*"
 django-environ = "*"
+serializers = "*"
 
 [dev-packages]
 
