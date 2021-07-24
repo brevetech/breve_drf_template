@@ -39,19 +39,22 @@ INSTALLED_APPS = [
     'drf_spectacular',
     # project apps
     'breve_drf_template.apps.employee.apps.EmployeeConfig',
+    'breve_drf_template.apps.core.apps.CoreConfig',
 ]
 
 # RestAPI config
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 15,
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']
 }
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Breve Rest Template',
     'DESCRIPTION': read_docs_md('index', BASE_DIR),
     'VERSION': 'v1.0.0',
+    'SCHEMA_PATH_PREFIX': '/api/v[0-9]',
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,
         "persistAuthorization": True,
@@ -59,7 +62,7 @@ SPECTACULAR_SETTINGS = {
     },
     # available SwaggerUI versions: https://github.com/swagger-api/swagger-ui/releases
     "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@4.0.0-beta.0", # default
-    # OTHER SETTINGS
+    "REDOC_DIST": "//cdn.jsdelivr.net/npm/redoc@next",
 }
 
 MIDDLEWARE = [
