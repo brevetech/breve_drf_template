@@ -8,5 +8,5 @@ router = routers.DefaultRouter()
 router.register(r'employee', EmployeeView)
 
 employee_urls = ([
-    path('', include(router.urls))
-], 'employee')
+                     path('', include(router.urls))
+                 ], 'employee')

@@ -1,7 +1,4 @@
-from pathlib import Path
-
 import os
-import sys
 
 import environ
 
@@ -14,14 +11,13 @@ env.read_env('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = root()
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-#DEBUG config
+# DEBUG config
 DEBUG = env.bool('DEBUG', default=True)
 
 # Application definition
@@ -61,7 +57,7 @@ SPECTACULAR_SETTINGS = {
         "displayOperationId": True,
     },
     # available SwaggerUI versions: https://github.com/swagger-api/swagger-ui/releases
-    "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@4.0.0-beta.0", # default
+    "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@4.0.0-beta.0",  # default
     "REDOC_DIST": "//cdn.jsdelivr.net/npm/redoc@next",
 }
 
@@ -80,7 +76,7 @@ ROOT_URLCONF = 'breve_drf_template.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [root('templates'),],
+        'DIRS': [root('templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,7 +90,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'breve_drf_template.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -113,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

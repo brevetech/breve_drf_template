@@ -50,4 +50,3 @@ class EmployeeView(viewsets.ModelViewSet):
     search_fields = ['user__first_name', 'user__last_name', 'user__email', 'dni']
     http_method_names = ['get']
     pagination_class = DefaultPagination
-

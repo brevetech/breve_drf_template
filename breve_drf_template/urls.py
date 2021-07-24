@@ -1,13 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
-from rest_framework import routers, permissions
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
+from rest_framework import routers
 
 from breve_drf_template.apps.core.urls import core_urls
 from breve_drf_template.apps.employee.urls import employee_urls
 from breve_drf_template.apps.employee.views import EmployeeView
-from breve_drf_template.apps.core.views import LocationViewSet
-from breve_drf_template.util import read_docs_md
 
 router = routers.DefaultRouter()
 

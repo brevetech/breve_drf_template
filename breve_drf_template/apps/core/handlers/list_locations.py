@@ -1,4 +1,3 @@
-
 def list_locations():
     """
     Returns dummy data to simulate a list query

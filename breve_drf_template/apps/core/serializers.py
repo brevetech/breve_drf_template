@@ -1,4 +1,3 @@
-import serializers as serializers
 from rest_framework import serializers
 
 

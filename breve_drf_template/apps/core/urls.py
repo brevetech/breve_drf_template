@@ -8,5 +8,5 @@ router = routers.DefaultRouter()
 router.register('locations', LocationViewSet, basename='locations')
 
 core_urls = ([
-    path('', include(router.urls))
-], 'core')
+                 path('', include(router.urls))
+             ], 'core')
