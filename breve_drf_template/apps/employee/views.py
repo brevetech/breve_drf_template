@@ -3,6 +3,8 @@ import logging
 from django.utils.decorators import method_decorator
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets, filters
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt import authentication
 
 from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
 from breve_drf_template.apps.employee.models import EmployeeModel
@@ -44,6 +46,9 @@ directly above of the desired method, without the name param
     }
 ))
 class EmployeeView(viewsets.ModelViewSet):
+    authentication_classes = [authentication.JWTAuthentication]
+    permission_classes = (IsAuthenticated,)
+
     queryset = EmployeeModel.objects.filter(user__is_active=True)
     serializer_class = EmployeeSerializer
     filter_backends = [filters.SearchFilter]
