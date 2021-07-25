@@ -8,9 +8,19 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 """
 
 import os
+import sys
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'breve_drf_template.settings')
+from breve_drf_template.utils import get_env_reader
+
+env = get_env_reader(levels=2)
+
+if env.bool("DEBUG"):
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
+elif sys.argv[1] == 'test':
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.test")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
 
 application = get_asgi_application()

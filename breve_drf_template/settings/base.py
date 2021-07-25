@@ -1,9 +1,8 @@
-from pathlib import Path
-
 import os
-import sys
 
 import environ
+
+from breve_drf_template.utils import read_docs_md
 
 root = environ.Path(start=__file__) - 3
 env = environ.Env()
@@ -12,14 +11,13 @@ env.read_env('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = root()
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-#DEBUG config
+# DEBUG config
 DEBUG = env.bool('DEBUG', default=True)
 
 # Application definition
@@ -34,10 +32,44 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # drf dependency apps
     'rest_framework',
-    'drf_yasg',
+    'drf_spectacular',
     # project apps
-    'breve_drf_template.apps.Employee.apps.EmployeeConfig',
+    'breve_drf_template.apps.employee.apps.EmployeeConfig',
+    'breve_drf_template.apps.core.apps.CoreConfig',
 ]
+
+# RestAPI config
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 15,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication']
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Breve Rest Template',
+    'DESCRIPTION': read_docs_md('index', BASE_DIR),
+    'VERSION': 'v1.0.0',
+    'SCHEMA_PATH_PREFIX': '/api/v[0-9]',
+    'CONTACT': {
+        "name": "Brevetech AS Opensource Corps",
+        "url": "https://brevetech.com",
+        "email": "opensource@brevetech.com"
+    },
+    "LICENSE": {
+        "name": "MIT License",
+        "URL": "https://opensource.org/licenses/MIT"
+    },
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+    },
+    # available SwaggerUI versions: https://github.com/swagger-api/swagger-ui/releases
+    "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@4.0.0-beta.0",
+    "REDOC_DIST": "//cdn.jsdelivr.net/npm/redoc@next",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +86,7 @@ ROOT_URLCONF = 'breve_drf_template.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [root('templates'),],
+        'DIRS': [root('templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,7 +100,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'breve_drf_template.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -88,11 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
