@@ -16,11 +16,12 @@ from breve_drf_template.utils import get_env_reader
 
 env = get_env_reader(levels=2)
 
-if env.bool("DEBUG"):
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
-elif sys.argv[1] == 'test':
+if sys.argv[1] == 'test':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.test")
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
+    if env.bool("DEBUG"):
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
+    else:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
 
 application = get_asgi_application()

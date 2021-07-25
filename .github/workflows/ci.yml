@@ -39,7 +39,5 @@ jobs:
         env:
           DEBUG: True
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DEV_DB_URL: ${{ secrets.DEV_DB_URL }}
-          PROD_DB_URL: ${{ secrets.PROD_DB_URL }}
         run: |
           pipenv run python3 manage.py test
