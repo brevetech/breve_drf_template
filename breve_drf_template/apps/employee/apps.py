@@ -10,5 +10,6 @@ class UserConfig(AppConfig):
 
 
 class EmployeeConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
     name = 'breve_drf_template.apps.employee'
     verbose_name = 'Empleados'
