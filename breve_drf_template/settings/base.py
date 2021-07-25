@@ -2,7 +2,7 @@ import os
 
 import environ
 
-from breve_drf_template.util import read_docs_md
+from breve_drf_template.utils import read_docs_md
 
 root = environ.Path(start=__file__) - 3
 env = environ.Env()

@@ -1,3 +1,5 @@
+import environ
+
 from django.conf import settings
 
 
@@ -15,3 +17,20 @@ def read_docs_md(filename, root=None):
         return f.read()
     except FileNotFoundError:
         return None
+
+
+def get_env_reader(levels):
+    """
+    Creates a django-environ reader setting root from the specified levels, for level 1 being .env
+    in the same folder than the .py file, so on and so forth.
+
+    :param(int) levels: the levels that the root will be placed relative to the .py file reference
+    :return: env reader.
+    """
+
+    root = environ.Path(start=__file__) - levels
+    env = environ.Env()
+    env.read_env('.env')
+
+    return env
+

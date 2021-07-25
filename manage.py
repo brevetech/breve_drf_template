@@ -5,14 +5,17 @@ import sys
 
 import environ
 
-root = environ.Path(start=__file__) - 1
-env = environ.Env()
-env.read_env('.env')
+from breve_drf_template.utils import get_env_reader
+
+env = get_env_reader(levels=1)
+
 
 def main():
     """Run administrative tasks."""
     if env.bool("DEBUG"):
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
+    elif sys.argv[1] == 'test':
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.test")
     else:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
     try:
