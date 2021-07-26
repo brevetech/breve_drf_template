@@ -8,6 +8,19 @@
 
 A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode.
 
+## Index
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [.env structure](#env-structure)
+- [Installing additional modules](#installing-additional-modules)
+- [Create new app](#creating-new-app)
+- [Endpoint clean code architecture](#endpoint-clean-code-architecture)
+- [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
+- [Authentication module](#authentication)
+
+
+
 ## Features
 
 - Python 3.9 and Django 3.2.
@@ -17,6 +30,7 @@ A Django Rest Framework base template with custom configurations, intended to sa
 - OpenAPI 3 schema and DocView with full customizable endpoint metadata, using [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html). 
 - JWT Authentication preconfigured using [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/).
 - Default [Github Actions](https://github.com/features/actions) CI workflow.
+- `whitenoise` staticfile handling for **Heroku** deploys and similar ones.
 - Clean code endpoint architecture.
 
 ## Getting started
@@ -93,4 +107,29 @@ The **common** package is meant to store all common access objects, like classes
 
 ## OpenAPI 3 Schema Documentation
 
-This template includes OpenAPI 3 schema documentation, using 
+This template includes OpenAPI 3 schema documentation, using `.md` files to create rich text descriptions. This descriptions are saved in the **apidocs** folder.
+
+The `index.md` file represents the general schema description. Modify it to edit the schema general description value, like instructions, project objectives, etc. The resting general inforation values are stored in the `SPECTACULAR_SETTINGS` dict in `settings.base`; for more information see [official documentation](https://drf-spectacular.readthedocs.io/en/latest/settings.html).
+
+For every other endpoint you can create a `{endpoint}.md` file in the `apidocs/endpoints/{app}` folder. To load it in the corresponding endpoint, read the file via `read_docs_md()` utils function, and load it via `extend_schema()` function (included in [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/customization.html#step-2-extend-schema)). Example:
+
+```python
+@method_decorator(name='list', decorator=extend_schema(
+    summary="Location list",
+    # list.md file stores the api description for this endpoint
+    description=read_docs_md('endpoints/core/list'),
+    responses={
+        200: LocationSerializer(many=True),
+        400: ErrorSerializer(),
+        500: ErrorSerializer()
+    }
+))
+class LocationViewSet(viewsets.ViewSet):
+```
+## Authentication
+
+This template uses `djangorestframework_simple_jwt` module for JWT Bearer token authentication. 
+
+This module works with a pair of JWT tokens, a `access` one, that is needed as `Authorization` in header of any request, and a `refresh` one that is used to get a new `access` token. Access token lives for 5 minutes by default, and refresh token lives for 24 hours by default; this configuration can be set up as required, see [official documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html). 
+
+The `auth_create` endpoint, for getting an access and refresh token pair with a django user, and the `auth_create_refresh`, that gets a new access token providing a refresh token, are both already exposed and configured by default. 

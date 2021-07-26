@@ -13,7 +13,7 @@ def read_docs_md(filename, root=None):
     """
     base = root or settings.BASE_DIR
     try:
-        f = open(f"{base}/docs/apidocs/{filename}.md", "r")
+        f = open(f"{base}/apidocs/{filename}.md", "r")
         return f.read()
     except FileNotFoundError:
         return None
