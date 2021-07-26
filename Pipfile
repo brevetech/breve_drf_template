@@ -13,6 +13,8 @@ swagger-spec-validator = "*"
 django-environ = "*"
 serializers = "*"
 drf-spectacular = "*"
+whitenoise = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

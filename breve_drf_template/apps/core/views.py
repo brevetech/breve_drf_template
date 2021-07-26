@@ -5,7 +5,7 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from breve_drf_template.apps.Common.Errors.serializer import ErrorSerializer
+from breve_drf_template.common.serializers import ErrorSerializer
 from breve_drf_template.apps.core.handlers.list_locations import list_locations
 from breve_drf_template.apps.core.serializers import LocationSerializer
 from breve_drf_template.utils import read_docs_md
