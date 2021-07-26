@@ -6,11 +6,11 @@ from rest_framework import viewsets, filters
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt import authentication
 
-from breve_drf_template.common.serializers import ErrorSerializer
-from breve_drf_template.apps.employee.models import EmployeeModel
-from breve_drf_template.apps.employee.serializers import EmployeeSerializer
-from breve_drf_template.paginators import DefaultPagination
-from breve_drf_template.utils import read_docs_md
+from {{project_name}}.common.serializers import ErrorSerializer
+from {{project_name}}.apps.employee.models import EmployeeModel
+from {{project_name}}.apps.employee.serializers import EmployeeSerializer
+from {{project_name}}.paginators import DefaultPagination
+from {{project_name}}.utils import read_docs_md
 
 logger = logging.getLogger('watchtower-logger')
 

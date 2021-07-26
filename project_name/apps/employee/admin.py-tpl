@@ -1,6 +1,6 @@
 from django.contrib.admin import register, ModelAdmin
 
-from breve_drf_template.apps.employee.models import EmployeeModel
+from {{project_name}}.apps.employee.models import EmployeeModel
 
 
 @register(EmployeeModel)
