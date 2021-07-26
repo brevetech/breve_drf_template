@@ -31,6 +31,7 @@ A Django Rest Framework base template with custom configurations, intended to sa
 - Default [Github Actions](https://github.com/features/actions) CI workflow.
 - `whitenoise` staticfile handling for **Heroku** deploys and similar ones.
 - Clean code endpoint architecture.
+- Heroku procfile default configuration
 
 ## Getting started
 
@@ -39,6 +40,7 @@ To use this template run the following command:
 ```shell
 $ django-admin.py startproject \
   --template=https://github.com/brevetech/breve_drf_template/archive/master.zip \
+  --name=Procfile \
   --extension=py,md,env \
   project_name
 $ pipenv install --dev
