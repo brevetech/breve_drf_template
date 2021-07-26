@@ -9,11 +9,14 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 gunicorn = "*"
 pillow = "*"
-drf-yasg = "*"
 swagger-spec-validator = "*"
 django-environ = "*"
+serializers = "*"
+drf-spectacular = "*"
+whitenoise = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.x"
