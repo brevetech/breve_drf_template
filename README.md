@@ -19,6 +19,7 @@ A Django Rest Framework base template with custom configurations, intended to sa
 - [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
 - [Authentication module](#authentication)
 - [CORS Policy](#cors-policy)
+- [Github Actions CI Workflow](#github-actions-ci-workflow)
 
 ## Features
 
@@ -140,3 +141,7 @@ The `auth_create` endpoint, for getting an access and refresh token pair with a 
 ## CORS Policy
 
 This template uses `django-cors-headers` middleware for cors handling. The configuration is set up in `CORS_ORIGIN_ALLOW_ALL` key at `settings.base`, set `False` as default. Change it to `True` for development purposes when using SPA frontends and third party consumers.
+
+## Github Actions CI Workflow
+
+This template includes a basic Github Actions CI Workflow. It's disabled by default; to enable it, go to `.github/workflows/ci.yml` and toggle comment in all file lines.
