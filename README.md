@@ -18,8 +18,7 @@ A Django Rest Framework base template with custom configurations, intended to sa
 - [Endpoint clean code architecture](#endpoint-clean-code-architecture)
 - [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
 - [Authentication module](#authentication)
-
-
+- [CORS Policy](#cors-policy)
 
 ## Features
 
@@ -101,7 +100,9 @@ This template uses a specific architecture based (kinda) on OOP languages **Clea
 - Views: defines all endpoints. You can use Function Based Views or Class Based Views (`APIView`, `ViewSet`, `ModelViewSet`).
 - Handlers: defines functions with all business logic and validations, database queries and database commands. Use a handler only if you need to redefine a complex logic for the endpoint, otherwise, check if `ModelViewSet` can help.
 - Entities: defines input and output objects for the handlers.
-- Common.errors: defines the basic error structure for endpoint responses.
+- ErrorSerializer: defines the basic error structure for endpoint responses.
+
+Entities, Serializers and handlers are not created when using `python manage.py startapp`, you'll need to create them manually.
 
 The **common** package is meant to store all common access objects, like classes, error serializers, mixins, etc.
 
@@ -133,3 +134,7 @@ This template uses `djangorestframework_simple_jwt` module for JWT Bearer token 
 This module works with a pair of JWT tokens, a `access` one, that is needed as `Authorization` in header of any request, and a `refresh` one that is used to get a new `access` token. Access token lives for 5 minutes by default, and refresh token lives for 24 hours by default; this configuration can be set up as required, see [official documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html). 
 
 The `auth_create` endpoint, for getting an access and refresh token pair with a django user, and the `auth_create_refresh`, that gets a new access token providing a refresh token, are both already exposed and configured by default. 
+
+## CORS Policy
+
+This template uses `django-cors-headers` middleware for cors handling. The configuration is set up in `CORS_ORIGIN_ALLOW_ALL` key at `settings.base`, set `False` as default. Change it to `True` for development purposes when using SPA frontends and third party consumers.
