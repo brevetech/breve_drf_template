@@ -6,7 +6,7 @@
 
 ---
 
-A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode.
+A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. For contrubution feel free to use the `editableVersion` branch; checkout new branch from this branch and pull request to this branch
 
 ## Index
 
