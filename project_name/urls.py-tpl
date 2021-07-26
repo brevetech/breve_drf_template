@@ -4,14 +4,9 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from breve_drf_template.apps.core.urls import core_urls
-from breve_drf_template.apps.employee.urls import employee_urls
-from breve_drf_template.apps.employee.views import EmployeeView
+from {{project_name}}.apps.core.urls import core_urls
+from {{project_name}}.apps.employee.urls import employee_urls
 
-router = routers.DefaultRouter()
-
-# employee pahts
-router.register(r'employee', EmployeeView)
 
 urlpatterns = [
     path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),

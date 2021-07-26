@@ -6,20 +6,22 @@
 
 ---
 
-A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode.
+A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. For contrubution feel free to use the `editableVersion` branch; checkout new branch from this branch and pull request to this branch
 
 ## Index
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [.env structure](#env-structure)
-- [Installing additional modules](#installing-additional-modules)
-- [Create new app](#creating-new-app)
-- [Endpoint clean code architecture](#endpoint-clean-code-architecture)
-- [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
-- [Authentication module](#authentication)
-- [CORS Policy](#cors-policy)
-- [Github Actions CI Workflow](#github-actions-ci-workflow)
+- [breve_drf_template](#breve_drf_template)
+  - [Index](#index)
+  - [Features](#features)
+  - [Getting started](#getting-started)
+  - [`.env` structure](#env-structure)
+  - [Installing additional modules](#installing-additional-modules)
+  - [Creating new app](#creating-new-app)
+  - [Endpoint clean code architecture](#endpoint-clean-code-architecture)
+  - [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
+  - [Authentication](#authentication)
+  - [CORS Policy](#cors-policy)
+  - [Github Actions CI Workflow](#github-actions-ci-workflow)
 
 ## Features
 
@@ -43,7 +45,10 @@ $ django-admin.py startproject \
   --template=https://github.com/brevetech/breve_drf_template/archive/master.zip \
   --name=Procfile \
   --extension=py,md,env \
-  project_name
+  {project_name}
+$ cd {project_name}
+$ mv idea .idea
+$ mv github .github
 $ pipenv install --dev
 ```
 
