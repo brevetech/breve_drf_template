@@ -12,12 +12,13 @@ env = get_env_reader(levels=1)
 
 def main():
     """Run administrative tasks."""
-    if env.bool("DEBUG"):
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
-    elif sys.argv[1] == 'test':
+    if sys.argv[1] == 'test':
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.test")
     else:
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
+        if env.bool("DEBUG"):
+            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.dev")
+        else:
+            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "breve_drf_template.settings.prod")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
