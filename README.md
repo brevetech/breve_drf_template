@@ -50,7 +50,7 @@ $ django-admin startproject \
   --extension=py,md,env,xml,iml \
   {project_name}
 $ cd {project_name}
-# enable .idea folder package for PyCham
+# enable .idea folder package for PyCharm
 $ mv idea .idea
 # enable .github folder for Github Actions workflows
 $ mv github .github
