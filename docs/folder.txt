@@ -1,1 +1,1 @@
-This folder is used to store project documentation, not OpenAPI documentation
+This folder is used to store project documentation, to serve in github pages for example, not OpenAPI documentation
