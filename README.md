@@ -6,7 +6,9 @@
 
 ---
 
-A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. For contrubution feel free to use the `editableVersion` branch; checkout new branch from this branch and pull request to this branch
+A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. 
+
+For contribution, base your branch in `develop`, find and replace `"{{project_name}}"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop.
 
 ## Index
 
@@ -38,16 +40,19 @@ A Django Rest Framework base template with custom configurations, intended to sa
 
 ## Getting started
 
-To use this template run the following command:
+To use this template run the following command, `django` package is required globally:
 
-```shell
-$ django-admin.py startproject \
+```sh
+# render all files with .py, .md .env .xml & .iml extension
+$ django-admin startproject \
   --template=https://github.com/brevetech/breve_drf_template/archive/master.zip \
   --name=Procfile \
-  --extension=py,md,env \
+  --extension=py,md,env,xml,iml \
   {project_name}
 $ cd {project_name}
+# enable .idea folder package for PyCham
 $ mv idea .idea
+# enable .github folder for Github Actions workflows
 $ mv github .github
 $ pipenv install --dev
 ```
@@ -149,4 +154,4 @@ This template uses `django-cors-headers` middleware for cors handling. The confi
 
 ## Github Actions CI Workflow
 
-This template includes a basic Github Actions CI Workflow. It's disabled by default; to enable it, go to `.github/workflows/ci.yml` and toggle comment in all file lines.
+This template includes a basic Github Actions CI Workflow, toggled on develop branch (git flow) push and pull request. It's disabled by default; to enable it, go to `.github/workflows/ci.yml` and toggle comment in all file lines.
