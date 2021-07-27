@@ -8,7 +8,7 @@
 
 A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. 
 
-For contribution, base your branch in `develop`, find and replace `"{{project_name}}"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop.
+For contribution, base your branch in `develop`, find and replace `"{{project_name}}"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop. For additional information open an issue.
 
 ## Index
 
@@ -43,7 +43,7 @@ For contribution, base your branch in `develop`, find and replace `"{{project_na
 To use this template run the following command, `django` package is required globally:
 
 ```sh
-# render all files with .py, .md .env .xml & .iml extension
+# render as template all files with .py, .md .env .xml & .iml extension
 $ django-admin startproject \
   --template=https://github.com/brevetech/breve_drf_template/archive/master.zip \
   --name=Procfile \
