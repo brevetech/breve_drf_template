@@ -29,3 +29,65 @@ class ReadWriteSerializerMixin(object):
                 % self.__class__.__name__
         )
         return self.write_serializer_class
+
+
+class MultiSerializerMixin(object):
+    """
+    Defines a different serializer for each method of a viewset.
+    Implement list_serializer_class, create_serializer_class, update_serializer_class,
+    partial_update_serializer_class and retrieve_serializer_class if methods implemented.
+    """
+
+    list_serializer_class = None
+    create_serializer_class = None
+    update_serializer_class = None
+    partial_update_serializer_class = None
+    retrieve_serializer_class = None
+
+    def get_serializer_class(self):
+        if self.action == "create":
+            return self.get_create_serializer_class()
+        elif self.action == "update":
+            return self.get_update_serializer_class()
+        elif self.action == "partial_update":
+            return self.get_partial_update_serializer_class()
+        elif self.action == "list":
+            return self.get_list_serializer_class()
+
+        return self.get_retrieve_serializer_class()
+
+    def get_retrieve_serializer_class(self):
+        assert self.retrieve_serializer_class is not None, (
+            "'%s' should either include a `read_serializer_class` attribute,"
+            "or override the `get_read_serializer_class()` method." % self.__class__.__name__
+        )
+        return self.retrieve_serializer_class
+
+    def get_create_serializer_class(self):
+        assert self.create_serializer_class is not None, (
+            "'%s' should either include a `create_serializer_class` attribute,"
+            "or override the `get_create_serializer_class()` method." % self.__class__.__name__
+        )
+        return self.create_serializer_class
+
+    def get_update_serializer_class(self):
+        assert self.update_serializer_class is not None, (
+            "'%s' should either include a `update_serializer_class` attribute,"
+            "or override the `get_update_serializer_class()` method." % self.__class__.__name__
+        )
+        return self.update_serializer_class
+
+    def get_partial_update_serializer_class(self):
+        assert self.partial_update_serializer_class is not None, (
+            "'%s' should either include a `partial_update_serializer_class` attribute,"
+            "or override the `get_partial_update_serializer_class()` method."
+            % self.__class__.__name__
+        )
+        return self.partial_update_serializer_class
+
+    def get_list_serializer_class(self):
+        assert self.list_serializer_class is not None, (
+            "'%s' should either include a `destroy_serializer_class` attribute,"
+            "or override the `get_destroy_serializer_class()` method." % self.__class__.__name__
+        )
+        return self.list_serializer_class

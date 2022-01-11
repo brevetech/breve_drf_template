@@ -12,7 +12,7 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 
-from {{project_name}}.utils import get_env_reader
+from {{project_name}}.common.utils import get_env_reader
 
 env = get_env_reader(levels=2)
 
