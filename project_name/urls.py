@@ -4,8 +4,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from project_name.apps.core.urls import core_urls
-from project_name.apps.employee.urls import employee_urls
+from {{project_name}}.apps.core.urls import core_urls
+from {{project_name}}.apps.employee.urls import employee_urls
 
 
 urlpatterns = [
@@ -19,5 +19,5 @@ urlpatterns = [
     path('api/v1/', include(employee_urls)),
 ]
 
-handler404 = "project_name.common.views.error_404"
-handler500 = "project_name.common.views.error_500"
+handler404 = "{{project_name}}.common.views.error_404"
+handler500 = "{{project_name}}.common.views.error_500"

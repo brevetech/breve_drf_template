@@ -2,7 +2,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 
-from project_name.common.serializers import ErrorSerializer, MultiErrorSerializer
+from {{project_name}}.common.serializers import ErrorSerializer, MultiErrorSerializer
 
 
 class BadRequestResponse(Response):

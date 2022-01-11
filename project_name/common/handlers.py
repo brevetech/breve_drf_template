@@ -1,11 +1,11 @@
 from rest_framework.views import exception_handler
 
-from project_name.common.responses import (
+from {{project_name}}.common.responses import (
     BadRequestResponse,
     ValidationErrorResponse,
     NotFoundResponse,
 )
-from project_name.common.utils import extract_errors
+from {{project_name}}.common.utils import extract_errors
 
 
 def custom_exception_handler(exc, context):
