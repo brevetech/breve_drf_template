@@ -8,7 +8,7 @@
 
 A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. 
 
-For contribution, base your branch in `develop`, find and replace `"{{project_name}}"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop. For additional information open an issue.
+For contribution, base your branch in `develop`, find and replace `"project_name"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop. For additional information open an issue.
 
 ## Index
 
