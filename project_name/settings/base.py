@@ -2,7 +2,7 @@ import os
 
 import environ
 
-from project_name.utils import read_docs_md
+from project_name.common.utils import read_docs_md
 
 root = environ.Path(start=__file__) - 3
 env = environ.Env()

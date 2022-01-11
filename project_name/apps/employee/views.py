@@ -10,7 +10,7 @@ from project_name.common.serializers import ErrorSerializer
 from project_name.apps.employee.models import EmployeeModel
 from project_name.apps.employee.serializers import EmployeeSerializer
 from project_name.paginators import DefaultPagination
-from project_name.utils import read_docs_md
+from project_name.common.utils import read_docs_md
 
 logger = logging.getLogger('watchtower-logger')
 
