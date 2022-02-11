@@ -15,6 +15,7 @@ serializers = "*"
 drf-spectacular = "*"
 whitenoise = "*"
 django-cors-headers = "*"
+django-filter = "*"
 
 [dev-packages]
 

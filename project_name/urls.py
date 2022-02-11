@@ -18,3 +18,6 @@ urlpatterns = [
     path('api/v1/', include(core_urls)),
     path('api/v1/', include(employee_urls)),
 ]
+
+handler404 = "{{project_name}}.common.views.error_404"
+handler500 = "{{project_name}}.common.views.error_500"

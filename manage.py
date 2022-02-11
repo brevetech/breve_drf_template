@@ -3,9 +3,7 @@
 import os
 import sys
 
-import environ
-
-from {{project_name}}.utils import get_env_reader
+from {{project_name}}.common.utils import get_env_reader
 
 env = get_env_reader(levels=1)
 
