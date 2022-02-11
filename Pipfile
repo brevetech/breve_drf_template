@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = ">=4.0.2"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 gunicorn = "*"
@@ -20,4 +20,4 @@ django-filter = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.x"
+python_version = "3"
