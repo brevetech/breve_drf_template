@@ -1,4 +1,5 @@
 # breve_drf_template
+
 [![Breve Template](https://img.shields.io/badge/breve-template-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MCA3MCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNlMDAwNGQ7fS5jbHMtMntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5SZWN1cnNvIDFsb2dvIHBhcmEgcGVyZmlsIGRlIGNvcnJlbzwvdGl0bGU+PGcgaWQ9IkNhcGFfMiIgZGF0YS1uYW1lPSJDYXBhIDIiPjxnIGlkPSJDYXBhXzEtMiIgZGF0YS1uYW1lPSJDYXBhIDEiPjxyZWN0IGNsYXNzPSJjbHMtMSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjcwIi8+PHBhdGggaWQ9IlN1c3RyYWNjacOzbl8yIiBkYXRhLW5hbWU9IlN1c3RyYWNjacOzbiAyIiBjbGFzcz0iY2xzLTIiIGQ9Ik00Mi41LDU4YTE2LDE2LDAsMCwxLTYuMjUtMS4yN2wtLjY3LS4zdi04LjdIMjUuMzVWMTFIMzUuNThWMjcuMjlsLjY3LS4zYTE2LDE2LDAsMCwxLDE3LjYsMy40NiwxNi4xNywxNi4xNywwLDAsMS01LjEsMjYuMjdBMTYsMTYsMCwwLDEsNDIuNSw1OFptMC0yMi45NGE2LjgxLDYuODEsMCwxLDAsNi43Nyw2LjgzdjBBNi43OSw2Ljc5LDAsMCwwLDQyLjUsMzUuMDVaIi8+PHJlY3QgaWQ9IlJlY3TDoW5ndWxvXzEzIiBkYXRhLW5hbWU9IlJlY3TDoW5ndWxvIDEzIiBjbGFzcz0iY2xzLTIiIHg9IjExLjU2IiB5PSI0Ny43MiIgd2lkdGg9IjEwLjIzIiBoZWlnaHQ9IjEwLjI4Ii8+PC9nPjwvZz48L3N2Zz4=)](https://www.brevetech.com/)
 [![forthebadge made-with-python](https://img.shields.io/badge/made_with-python-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![forthebadge django-rest](https://img.shields.io/badge/django-rest_framework-a30000?style=for-the-badge&logo=django)](https://www.python.org/)
@@ -6,9 +7,14 @@
 
 ---
 
-A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode. 
+A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode.
 
-For contribution, base your branch in `develop`, find and replace `"{{project_name}}"` ocurrences with `"project_name"` projectwide and work there. When you're ready to pull request, rollback the previous find and replace and pull request to develop. For additional information open an issue.
+**For contribution**, base your branch in `develop`. Disable template features using the provided `toggle_template.py` script. This will find and replace the `py-tpl` strings `{{project_name}}` with simple strings `project_name` in all project files in order to allow it to run and test.
+
+```sh
+# "disable" replaces {{project_name}} with project_name, allowing code to run, "enable" discards the find and replace enabling the py-tpl features required to django project template
+python toggle_template.py <enable|disable>
+```
 
 ## Index
 
@@ -27,15 +33,19 @@ For contribution, base your branch in `develop`, find and replace `"{{project_na
 
 ## Features
 
-- Python 3.9 and Django 3.2.
+- Python 3 and Django 4.0.2 (locked to this version due to security issues).
 - `.env` managing with relevant safe variables using [`django-environ`](https://django-environ.readthedocs.io/en/latest/) module.
 - `pipfile` requirements modules handling.
-- Environment-sensitive settings (`dev`, `test` and `prod`). 
-- OpenAPI 3 schema and DocView with full customizable endpoint metadata, using [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html). 
+- Script for enabling/disabling template functioning. **Use when intended to contribute**.
+- Environment-sensitive settings (`dev`, `test` and `prod`).
+- OpenAPI 3 schema and DocView with full customizable endpoint metadata, using [`drf-spectacular`](https://drf-spectacular.readthedocs.io/en/latest/readme.html).
 - JWT Authentication preconfigured using [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/).
 - Default [Github Actions](https://github.com/features/actions) CI workflow.
 - `whitenoise` staticfile handling for **Heroku** deploys and similar ones.
 - Clean code endpoint architecture.
+- Custom error handling for centralized logging and exception behaviour definition
+- JSON responses for 404 and 500 errors in non debug environment
+- Boilerplate abstract models (Timestamped and Person).
 - Heroku procfile default configuration
 
 ## Getting started
@@ -62,12 +72,14 @@ This will start a new django project with the template structure. To run the pro
 ## `.env` structure
 
 This project uses a `.env` file and the [`django-environ`](https://django-environ.readthedocs.io/en/latest/) module to keep all the sensitive configuration, like secret keys, database URI's or some other credentials off version control. The default `.env` structure includes this variables:
+
 ```toml
-DEBUG={value}
-SECRET_KEY={secret_key}
-DEV_DB_URL={dev_db_url}
-PROD_DB_URL={prod_db_url}
+DEBUG=<value>
+SECRET_KEY=<secret_key>
+DEV_DB_URL=<dev_db_url>
+PROD_DB_URL=<prod_db_url>
 ```
+
 - **DEBUG** (`True`, `False`) will define if debug mode is enabled or not. Use `True` for development and testing purpose and `False` in production environments. This variable also defines which configuration is being used.
 - **SECRET_KEY** is the seed used for encryption purposes. Django recommends to keep it off source control. To generate a secret key, you can go to [Djecrety](https://djecrety.ir).
 - **DEV_DB_URL** is the development environment database URL. For testing purpose you can use `sqlite:///db.sqlite3` as DEV_DB_URL. If you want to use another database engine, remember to **install** the required package (e.g. `psycopg2` for PostgreSQL databases).
@@ -78,7 +90,8 @@ PROD_DB_URL={prod_db_url}
 To install a new package, run:
 
 ```shell
-$ pipenv install {package}
+# Install package
+$ pipenv install <package>
 ```
 
 This will keep all requirements packages into the `Pipfile`, improving project compatibility across teams and allowing easy use of virtual environments.
@@ -86,7 +99,8 @@ This will keep all requirements packages into the `Pipfile`, improving project c
 To remove a package, run:
 
 ```shell
-$ pipenv uninstall {package}
+# Uninstall package
+$ pipenv uninstall <package>
 ```
 
 This will remove the package from the `Pipfile`.
@@ -96,6 +110,7 @@ This will remove the package from the `Pipfile`.
 This template defines a different folder structure for apps, putting them in an `apps` directory inside the project directory. This is only for comfort purposes. Because of this, to create a new app, you need to run this:
 
 ```shell
+# Creating new project app
 $ mkdir {project_name}/apps/{app_name}
 $ python manage.py startapp {app_name} apps/{app_name}
 ```
@@ -140,13 +155,14 @@ For every other endpoint you can create a `{endpoint}.md` file in the `apidocs/e
 ))
 class LocationViewSet(viewsets.ViewSet):
 ```
+
 ## Authentication
 
-This template uses `djangorestframework_simple_jwt` module for JWT Bearer token authentication. 
+This template uses `djangorestframework_simple_jwt` module for JWT Bearer token authentication.
 
-This module works with a pair of JWT tokens, a `access` one, that is needed as `Authorization` in header of any request, and a `refresh` one that is used to get a new `access` token. Access token lives for 5 minutes by default, and refresh token lives for 24 hours by default; this configuration can be set up as required, see [official documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html). 
+This module works with a pair of JWT tokens, a `access` one, that is needed as `Authorization` in header of any request, and a `refresh` one that is used to get a new `access` token. Access token lives for 5 minutes by default, and refresh token lives for 24 hours by default; this configuration can be set up as required, see [official documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html).
 
-The `auth_create` endpoint, for getting an access and refresh token pair with a django user, and the `auth_create_refresh`, that gets a new access token providing a refresh token, are both already exposed and configured by default. 
+The `auth_create` endpoint, for getting an access and refresh token pair with a django user, and the `auth_create_refresh`, that gets a new access token providing a refresh token, are both already exposed and configured by default.
 
 ## CORS Policy
 
