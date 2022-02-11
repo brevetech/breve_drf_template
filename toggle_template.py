@@ -2,18 +2,12 @@ import os
 import re
 import sys
 
-from binaryornot.check import is_binary
-
-
 def replace_text_in_file(selected_file, text_to_find, replace_text):
     """Replaces specified text with specified replace text in selected file
 
-    :param selected_file: the selected file
-    :type selected_file: str
-    :param text_to_find: the selected text to find
-    :type text_to_find: str
-    :param replace_text: the selected text to replace with
-    :type replace_text: str
+    :param(str) selected_file: the selected file
+    :param(str) text_to_find: the selected text to find
+    :param(str) replace_text: the selected text to replace with
     :returns(bool): True if file was modified, false otherwise
     """
     print(selected_file)
