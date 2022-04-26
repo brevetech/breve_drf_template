@@ -19,6 +19,7 @@ django-cors-headers = "*"
 [dev-packages]
 pylint = "*"
 pylint-venv = "*"
+black = "*"
 
 [requires]
 python_version = "3"

@@ -10,10 +10,7 @@ class ErrorSerializer(serializers.Serializer):
         self.message = message
 
     def get_data(self):
-        return {
-            "code_error": self.code_error,
-            "message": self.message
-        }
+        return {"code_error": self.code_error, "message": self.message}
 
     class Meta:
-        fields = ('code_error', 'message')
+        fields = ("code_error", "message")

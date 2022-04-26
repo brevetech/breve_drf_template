@@ -10,7 +10,7 @@ from project_name.apps.core.handlers.list_locations import list_locations
 from project_name.apps.core.serializers import LocationSerializer
 from project_name.utils import read_docs_md
 
-logger = logging.getLogger('watchtower-logger')
+logger = logging.getLogger("watchtower-logger")
 
 """
 About Swagger method_decorator
@@ -27,15 +27,18 @@ directly above of the desired method, without the name param
 """
 
 
-@method_decorator(name='list', decorator=extend_schema(
-    summary="Location list",
-    description=read_docs_md('endpoints/core/list'),
-    responses={
-        200: LocationSerializer(many=True),
-        400: ErrorSerializer(),
-        500: ErrorSerializer()
-    }
-))
+@method_decorator(
+    name="list",
+    decorator=extend_schema(
+        summary="Location list",
+        description=read_docs_md("endpoints/core/list"),
+        responses={
+            200: LocationSerializer(many=True),
+            400: ErrorSerializer(),
+            500: ErrorSerializer(),
+        },
+    ),
+)
 class LocationViewSet(viewsets.ViewSet):
     """
     Locations views

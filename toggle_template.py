@@ -2,6 +2,7 @@ import os
 import re
 import sys
 
+
 def replace_text_in_file(selected_file, text_to_find, replace_text):
     """Replaces specified text with specified replace text in selected file
 
@@ -41,7 +42,11 @@ def find_and_replace_in_directory(dir_name, text_to_find, replace_text):
     file_list = []
     modified_files = 0
     for (dirpath, dirnames, filenames) in os.walk(dir_name):
-        file_list += [os.path.join(dirpath, file) for file in filenames if os.path.join(dirpath, file) != __file__]
+        file_list += [
+            os.path.join(dirpath, file)
+            for file in filenames
+            if os.path.join(dirpath, file) != __file__
+        ]
 
     # Print the files
     for file in file_list:
@@ -57,13 +62,15 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     if (x := sys.argv[1]) not in ["enable", "disable"]:
-        print("Incorrect argument. Allowed values: [\"enable\", \"disable\"]")
+        print('Incorrect argument. Allowed values: ["enable", "disable"]')
         sys.exit(-1)
 
     print(x)
 
-    y = find_and_replace_in_directory(os.getcwd(),
-                                      r"{{project_name}}" if x == "disable" else "project_name",
-                                      r"project_name" if x == "disable" else "{{project_name}}")
+    y = find_and_replace_in_directory(
+        os.getcwd(),
+        r"{{project_name}}" if x == "disable" else "project_name",
+        r"project_name" if x == "disable" else "{{project_name}}",
+    )
 
     print(f"Total files modified: {y}")

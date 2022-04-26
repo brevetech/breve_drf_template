@@ -14,22 +14,46 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='EmployeeModel',
+            name="EmployeeModel",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('address', models.TextField(null=True, unique=True, verbose_name='Dirección')),
-                ('dni', models.CharField(max_length=16, unique=True, verbose_name='Cédula')),
-                ('phone_number', models.CharField(max_length=25, null=True, verbose_name='Télefono')),
-                ('labor_specialty', models.CharField(max_length=50, null=True, verbose_name='Especialidad')),
-                ('profile_photo', models.ImageField(blank=True, null=True, upload_to='employees_photos',
-                                                    verbose_name='Foto de Empleado')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='employee',
-                                              to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("address", models.TextField(null=True, unique=True, verbose_name="Dirección")),
+                ("dni", models.CharField(max_length=16, unique=True, verbose_name="Cédula")),
+                (
+                    "phone_number",
+                    models.CharField(max_length=25, null=True, verbose_name="Télefono"),
+                ),
+                (
+                    "labor_specialty",
+                    models.CharField(max_length=50, null=True, verbose_name="Especialidad"),
+                ),
+                (
+                    "profile_photo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="employees_photos",
+                        verbose_name="Foto de Empleado",
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="employee",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Empleado',
-                'verbose_name_plural': 'Empleados',
-                'ordering': ['id'],
+                "verbose_name": "Empleado",
+                "verbose_name_plural": "Empleados",
+                "ordering": ["id"],
             },
         ),
     ]

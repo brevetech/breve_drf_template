@@ -16,7 +16,7 @@ from project_name.utils import get_env_reader
 
 env = get_env_reader(levels=2)
 
-if sys.argv[1] == 'test':
+if sys.argv[1] == "test":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.test")
 else:
     if env.bool("DEBUG"):

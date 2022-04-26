@@ -30,7 +30,6 @@ def get_env_reader(levels):
 
     root = environ.Path(start=__file__) - levels
     env = environ.Env()
-    env.read_env('.env')
+    env.read_env(".env")
 
     return env
-

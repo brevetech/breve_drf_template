@@ -16,16 +16,14 @@ class ReadWriteSerializerMixin(object):
 
     def get_read_serializer_class(self):
         assert self.read_serializer_class is not None, (
-                "'%s' should either include a `read_serializer_class` attribute,"
-                "or override the `get_read_serializer_class()` method."
-                % self.__class__.__name__
+            "'%s' should either include a `read_serializer_class` attribute,"
+            "or override the `get_read_serializer_class()` method." % self.__class__.__name__
         )
         return self.read_serializer_class
 
     def get_write_serializer_class(self):
         assert self.write_serializer_class is not None, (
-                "'%s' should either include a `write_serializer_class` attribute,"
-                "or override the `get_write_serializer_class()` method."
-                % self.__class__.__name__
+            "'%s' should either include a `write_serializer_class` attribute,"
+            "or override the `get_write_serializer_class()` method." % self.__class__.__name__
         )
         return self.write_serializer_class

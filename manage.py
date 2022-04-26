@@ -12,7 +12,7 @@ env = get_env_reader(levels=1)
 
 def main():
     """Run administrative tasks."""
-    if sys.argv[1] == 'test':
+    if sys.argv[1] == "test":
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.test")
     else:
         if env.bool("DEBUG"):
@@ -30,5 +30,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
