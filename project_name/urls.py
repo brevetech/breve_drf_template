@@ -4,8 +4,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from {{project_name}}.apps.core.urls import core_urls
-from {{project_name}}.apps.employee.urls import employee_urls
+from project_name.apps.core.urls import core_urls
+from project_name.apps.employee.urls import employee_urls
 
 
 urlpatterns = [

@@ -17,6 +17,8 @@ whitenoise = "*"
 django-cors-headers = "*"
 
 [dev-packages]
+pylint = "*"
+pylint-venv = "*"
 
 [requires]
 python_version = "3"
