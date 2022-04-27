@@ -21,6 +21,7 @@ pylint = "*"
 pylint-venv = "*"
 black = "*"
 pre-commit = "*"
+commitizen = "*"
 
 [requires]
 python_version = "3"
