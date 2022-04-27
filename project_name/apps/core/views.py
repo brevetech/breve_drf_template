@@ -15,13 +15,13 @@ logger = logging.getLogger("watchtower-logger")
 """
 About Swagger method_decorator
 
-If you want to doc a default method of a Class Viewset, 
+If you want to doc a default method of a Class Viewset,
 you have to put the method_decorator directly above of
 the viewset class code, and specify the name of the method
 that you want to doc. E.g. name='list' for the list
 method.
 
-If you want to doc an override Class Viewset method, 
+If you want to doc an override Class Viewset method,
 or a View method, you have to place the method_decorator
 directly above of the desired method, without the name param
 """

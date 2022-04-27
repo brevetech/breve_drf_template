@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: pylint
+        name: Pylinting
+        entry: pylint
+        language: system
+        types: [python]
+        args: [
+            "-rn", # Only display messages
+            "-sn", # Don't display the scor
+            "--rcfile=.pylintrc", # Link to your config file
+            "--recursive=y", # recursive project level
+            ".",
+          ]
+      - id: black
+        name: Black Formatter
+        entry: black
+        language: system
+        types: [python]
+        args: ["."]
