@@ -22,6 +22,10 @@ pylint-venv = "*"
 black = "*"
 pre-commit = "*"
 commitizen = "*"
+commitizen-emoji = "*"
 
 [requires]
 python_version = "3"
+
+[pipenv]
+allow_prereleases = true
