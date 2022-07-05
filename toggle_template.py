@@ -1,5 +1,4 @@
 import os
-import re
 import sys
 
 
@@ -14,14 +13,14 @@ def replace_text_in_file(selected_file, text_to_find, replace_text):
     print(selected_file)
     if os.path.basename(selected_file) not in ["Procfile", ".env"]:
         if os.path.splitext(selected_file)[1] not in [".py", ".iml", ".xml"]:
-            return
+            return None
 
     print(f"Working on file: {selected_file}")
-    with open(selected_file, "r") as file:
+    with open(selected_file, "r", encoding="UTF-8") as file:
         data = file.read()
         if data != "":
             data = data.replace(text_to_find, replace_text)
-            with open(selected_file, "w") as writefile:
+            with open(selected_file, "w", encoding="UTF-8") as writefile:
                 writefile.write(data)
                 return True
 
@@ -41,7 +40,7 @@ def find_and_replace_in_directory(dir_name, text_to_find, replace_text):
     # Get the list of all files in directory tree at given path
     file_list = []
     modified_files = 0
-    for (dirpath, dirnames, filenames) in os.walk(dir_name):
+    for (dirpath, dirnames, filenames) in os.walk(dir_name):  # pylint: disable=unused-variable
         file_list += [
             os.path.join(dirpath, file)
             for file in filenames
@@ -65,12 +64,10 @@ if __name__ == "__main__":
         print('Incorrect argument. Allowed values: ["enable", "disable"]')
         sys.exit(-1)
 
-    print(x)
-
-    y = find_and_replace_in_directory(
+    MODIFIED_FILES = find_and_replace_in_directory(
         os.getcwd(),
         r"{{project_name}}" if x == "disable" else "project_name",
         r"project_name" if x == "disable" else "{{project_name}}",
     )
 
-    print(f"Total files modified: {y}")
+    print(f"Total files modified: {MODIFIED_FILES}")

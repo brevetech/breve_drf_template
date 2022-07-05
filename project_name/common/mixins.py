@@ -1,4 +1,4 @@
-class ReadWriteSerializerMixin(object):
+class ReadWriteSerializerMixin:
     """
     Overrides get_serializer_class to choose the read serializer
     for GET requests and the write serializer for POST requests.
@@ -10,20 +10,26 @@ class ReadWriteSerializerMixin(object):
     write_serializer_class = None
 
     def get_serializer_class(self):
+        """Gets the serializer class
+
+        :return: serializer class
+        """
         if self.action in ["create", "update", "partial_update", "destroy"]:
             return self.get_write_serializer_class()
         return self.get_read_serializer_class()
 
     def get_read_serializer_class(self):
+        """Gets read serializer class"""
         assert self.read_serializer_class is not None, (
-            "'%s' should either include a `read_serializer_class` attribute,"
-            "or override the `get_read_serializer_class()` method." % self.__class__.__name__
+            f"{self.__class__.__name__} should either include a `read_serializer_class` attribute,"
+            "or override the `get_read_serializer_class()` method."
         )
         return self.read_serializer_class
 
     def get_write_serializer_class(self):
+        """Gets write serializer class"""
         assert self.write_serializer_class is not None, (
-            "'%s' should either include a `write_serializer_class` attribute,"
-            "or override the `get_write_serializer_class()` method." % self.__class__.__name__
+            f"{self.__class__.__name__} should either include a `write_serializer_class` attribute,"
+            "or override the `get_write_serializer_class()` method."
         )
         return self.write_serializer_class

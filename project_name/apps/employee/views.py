@@ -1,5 +1,3 @@
-import logging
-
 from django.utils.decorators import method_decorator
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets, filters
@@ -12,26 +10,8 @@ from project_name.apps.employee.serializers import EmployeeSerializer
 from project_name.paginators import DefaultPagination
 from project_name.utils import read_docs_md
 
-logger = logging.getLogger("watchtower-logger")
-
-"""
-About Swagger method_decorator
-
-If you want to doc a default method of a Class Viewset,
-you have to put the method_decorator directly above of
-the viewset class code, and specify the name of the method
-that you want to doc. E.g. name='list' for the list
-method.
-
-If you want to doc an override Class Viewset method,
-or a View method, you have to place the method_decorator
-directly above of the desired method, without the name param
-"""
-
 
 # remember use method_decorator for detailed documentation
-
-
 @method_decorator(
     name="list",
     decorator=extend_schema(
@@ -47,6 +27,8 @@ directly above of the desired method, without the name param
     ),
 )
 class EmployeeView(viewsets.ModelViewSet):
+    """Main employee viewset"""
+
     authentication_classes = [authentication.JWTAuthentication]
     permission_classes = (IsAuthenticated,)
 

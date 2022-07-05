@@ -1,36 +1,36 @@
 repos:
-- hooks:
-  - id: trailing-whitespace
-  - id: end-of-file-fixer
-  - id: check-yaml
-  - id: check-added-large-files
-  repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v3.2.0
-- hooks:
-  - args:
-    - -rn
-    - -sn
-    - --rcfile=.pylintrc
-    - --recursive=y
-    - .
-    entry: pylint
-    id: pylint
-    language: system
-    name: Pylinting
-    types:
-    - python
-  - args:
-    - .
-    entry: black
-    id: black
-    language: system
-    name: Black Formatter
-    types:
-    - python
-  repo: local
-- hooks:
-  - id: commitizen
-    stages:
-    - commit-msg
-  repo: https://github.com/commitizen-tools/commitizen
-  rev: v2.24.0
+  - hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+  - hooks:
+      - args:
+          - -rn
+          - -sn
+          - --recursive=y
+          - --disable=django-not-configured
+          - "."
+        entry: pylint
+        id: pylint
+        language: system
+        name: Pylinting
+        types:
+          - python
+      - args:
+          - .
+        entry: black
+        id: black
+        language: system
+        name: Black Formatter
+        types:
+          - python
+    repo: local
+  - hooks:
+      - id: commitizen
+        stages:
+          - commit-msg
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.24.0

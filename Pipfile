@@ -22,7 +22,8 @@ pylint-venv = "*"
 black = "*"
 pre-commit = "*"
 commitizen = "*"
-commitizen-emoji = "*"
+pylint-django = "*"
+autoflake = "*"
 
 [requires]
 python_version = "3"

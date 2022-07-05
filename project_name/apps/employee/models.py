@@ -3,6 +3,8 @@ from django.db import models
 
 
 class EmployeeModel(models.Model):
+    """Employee Model"""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="employee")
     address = models.TextField(null=True, verbose_name="Dirección", unique=True)
     dni = models.CharField(max_length=16, verbose_name="Cédula", unique=True)
