@@ -42,9 +42,9 @@ def set_settings(env: environ.Env):
     :param env: the django_environ instance
     """
     if sys.argv[1] == "test":
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.test")
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{project_name}}.settings.test")
     else:
         if env.bool("DEBUG"):
-            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.dev")
+            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{project_name}}.settings.dev")
         else:
-            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings.prod")
+            os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{project_name}}.settings.prod")

@@ -12,5 +12,5 @@ class EmployeeConfig(AppConfig):
     """Employee app config"""
 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "project_name.apps.employee"
+    name = "{{project_name}}.apps.employee"
     verbose_name = "Empleados"

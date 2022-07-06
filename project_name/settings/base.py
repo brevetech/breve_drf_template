@@ -2,7 +2,7 @@ import os
 
 import environ
 
-from project_name.utils import read_docs_md
+from {{project_name}}.utils import read_docs_md
 
 root = environ.Path(start=__file__) - 3
 env = environ.Env()
@@ -34,8 +34,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     # project apps
-    "project_name.apps.employee.apps.EmployeeConfig",
-    "project_name.apps.core.apps.CoreConfig",
+    "{{project_name}}.apps.employee.apps.EmployeeConfig",
+    "{{project_name}}.apps.core.apps.CoreConfig",
 ]
 
 # RestAPI config
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-ROOT_URLCONF = "project_name.urls"
+ROOT_URLCONF = "{{project_name}}.urls"
 
 TEMPLATES = [
     {
@@ -101,7 +101,7 @@ SPECTACULAR_SETTINGS = {
     "REDOC_DIST": "//cdn.jsdelivr.net/npm/redoc@next",
 }
 
-WSGI_APPLICATION = "project_name.wsgi.application"
+WSGI_APPLICATION = "{{project_name}}.wsgi.application"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
