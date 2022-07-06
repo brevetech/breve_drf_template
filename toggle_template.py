@@ -40,7 +40,9 @@ def find_and_replace_in_directory(dir_name, text_to_find, replace_text):
     # Get the list of all files in directory tree at given path
     file_list = []
     modified_files = 0
-    for (dirpath, dirnames, filenames) in os.walk(dir_name):  # pylint: disable=unused-variable
+    for (dirpath, dirnames, filenames) in os.walk(  # noqa # pylint: disable=unused-variable
+        dir_name
+    ):
         file_list += [
             os.path.join(dirpath, file)
             for file in filenames

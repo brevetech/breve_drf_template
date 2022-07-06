@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import sys
 
-
 from project_name.utils import get_env_reader, set_settings
 
 env = get_env_reader()

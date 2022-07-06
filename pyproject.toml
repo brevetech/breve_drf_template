@@ -97,3 +97,6 @@ type = "input"
 name = "issues"
 message = "Write closed github issues if there are, comma separated.\nPLEASE BE CAREFUL, INPUT VALIDATION IS NOT IMPLEMENTED YET. [ENTER to skip]\n"
 default = ''
+
+[tool.isort]
+profile = "black"

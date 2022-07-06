@@ -4,9 +4,40 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
+      - id: check-toml
     repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
   - hooks:
+      - args:
+          - .
+        entry: black
+        id: black
+        language: system
+        name: Black Formatter
+        types:
+          - python
+      - args:
+          - .
+        entry: isort
+        id: isort
+        language: system
+        name: Isort sort imports
+        types:
+          - python
+      - args:
+          [
+            "--imports=django,requests,urllib3,environ",
+            --remove-unused-variables,
+            -r,
+            --in-place,
+            .,
+          ]
+        entry: autoflake
+        id: autoflake
+        language: system
+        name: Autoflake remove unused imports and variables
+        types:
+          - python
       - args:
           - -rn
           - -sn
@@ -16,15 +47,7 @@ repos:
         entry: pylint
         id: pylint
         language: system
-        name: Pylinting
-        types:
-          - python
-      - args:
-          - .
-        entry: black
-        id: black
-        language: system
-        name: Black Formatter
+        name: Pylint
         types:
           - python
     repo: local

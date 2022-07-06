@@ -2,8 +2,8 @@
 
 import os
 import sys
-import environ
 
+import environ
 from django.conf import settings
 
 
