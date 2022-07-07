@@ -59,6 +59,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "project_name.common.middleware.RequestLogMiddleware",
 ]
 
 ROOT_URLCONF = "project_name.urls"
@@ -150,3 +151,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "assets-root", "media")
 
 # CORS config
 CORS_ORIGIN_ALLOW_ALL = False
+
+# Logging config
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"standard": {"format": "[{asctime}] [{levelname}] || {message}", "style": "{"}},
+    "handlers": {
+        "console": {"level": "INFO", "class": "logging.StreamHandler", "formatter": "standard"}
+    },
+    "loggers": {"root": {"level": "INFO", "handlers": ["console"]}},
+}
