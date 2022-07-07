@@ -1,16 +1,13 @@
-from .base import *
+from project_name.settings.base import *  # pylint: disable=W0401, W0614, E0401
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {"default": env.db("DEV_DB_URL")}
+DATABASES = {"default": env.db("PROD_DB_URL")}  # pylint: disable=E0602
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = "/domain/"
+STATIC_URL = "/static/"
