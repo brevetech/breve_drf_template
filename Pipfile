@@ -18,6 +18,17 @@ django-cors-headers = "*"
 django-filter = "*"
 
 [dev-packages]
+pylint = "*"
+pylint-venv = "*"
+black = "*"
+pre-commit = "*"
+commitizen = "*"
+pylint-django = "*"
+autoflake = "*"
+isort = "*"
 
 [requires]
 python_version = "3"
+
+[pipenv]
+allow_prereleases = true

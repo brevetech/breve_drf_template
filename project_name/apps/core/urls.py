@@ -1,12 +1,9 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework import routers
-
 from {{project_name}}.apps.core.views import LocationViewSet
 
 router = routers.DefaultRouter()
 
-router.register('locations', LocationViewSet, basename='locations')
+router.register("locations", LocationViewSet, basename="locations")
 
-core_urls = ([
-                 path('', include(router.urls))
-             ], 'core')
+core_urls = ([path("", include(router.urls))], "core")

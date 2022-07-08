@@ -11,10 +11,12 @@ class ErrorSerializer(serializers.Serializer):
     message = serializers.CharField(max_length=500)
 
     def set_data(self, error_code, message):
+        """Set serializer data"""
         self.error_code = error_code
         self.message = message
 
     def get_data(self):
+        """Get serializer data"""
         return {"code_error": self.error_code, "message": self.message}
 
     class Meta:
@@ -29,11 +31,13 @@ class MultiErrorSerializer(serializers.Serializer):
     error_code = serializers.IntegerField()
 
     def set_data(self, error_code, error_type, errors):
+        """Set serializer data"""
         self.error_code = error_code
         self.error_type = error_type
         self.errors = errors
 
     def get_data(self):
+        """Get serializer data"""
         return {
             "code_error": self.error_code,
             "error_type": self.error_type,
@@ -54,10 +58,12 @@ class CommonResponseSerializer(serializers.Serializer):
     message = serializers.CharField(max_length=500)
 
     def set_data(self, status, message):
+        """Set serializer data"""
         self.status = status
         self.message = message
 
     def get_data(self):
+        """Get serializer data"""
         return {"status": self.status, "message": self.message}
 
     class Meta:

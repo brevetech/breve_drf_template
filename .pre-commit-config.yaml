@@ -1,0 +1,59 @@
+repos:
+  - hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-toml
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+  - hooks:
+      - args:
+          - .
+        entry: black
+        id: black
+        language: system
+        name: Black Formatter
+        types:
+          - python
+      - args:
+          - .
+        entry: isort
+        id: isort
+        language: system
+        name: Isort sort imports
+        types:
+          - python
+      - args:
+          [
+            "--imports=django,requests,urllib3,environ",
+            --remove-unused-variables,
+            -r,
+            --in-place,
+            .,
+          ]
+        entry: autoflake
+        id: autoflake
+        language: system
+        name: Autoflake remove unused imports and variables
+        types:
+          - python
+      - args:
+          - -rn
+          - -sn
+          - --recursive=y
+          - --disable=django-not-configured
+          - "."
+        entry: pylint
+        id: pylint
+        language: system
+        name: Pylint
+        types:
+          - python
+    repo: local
+  - hooks:
+      - id: commitizen
+        stages:
+          - commit-msg
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.24.0
