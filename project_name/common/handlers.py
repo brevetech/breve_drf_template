@@ -1,9 +1,8 @@
 from rest_framework.views import exception_handler
-
 from {{project_name}}.common.responses import (
     BadRequestResponse,
-    ValidationErrorResponse,
     NotFoundResponse,
+    ValidationErrorResponse,
 )
 from {{project_name}}.common.utils import extract_errors
 
@@ -17,7 +16,7 @@ def custom_exception_handler(exc, context):
     """
     handlers = {
         "ValidationError": _handle_validation_error,
-        "Http404": _handle_generic_error,
+        "Http404": _handle_not_found_error,
         "PermissionDenied": _handle_generic_error,
         "NotAuthenticated": _handle_authentication_error,
         "BadRequest": _handle_badrequest_error,
@@ -37,11 +36,11 @@ def custom_exception_handler(exc, context):
     )
 
 
-def _handle_generic_error(exc, context, response):
+def _handle_generic_error(exc, context, response):  # pylint: disable=unused-argument
     return response
 
 
-def _handle_authentication_error(exc, context, response):
+def _handle_authentication_error(exc, context, response):  # pylint: disable=unused-argument
     response.data = {
         "error": "Authentication required to access this resource",
         "status_code": response.status_code,
@@ -50,22 +49,21 @@ def _handle_authentication_error(exc, context, response):
     return response
 
 
-def _handle_badrequest_error(exc, context, response):
+def _handle_badrequest_error(exc, context, response):  # pylint: disable=unused-argument
     return BadRequestResponse(err_message=str(exc))
 
 
-def _handle_not_found_error(exc, context, response):
+def _handle_not_found_error(exc, context, response):  # pylint: disable=unused-argument
     return NotFoundResponse(err_message=str(exc))
 
 
-def _handle_validation_error(exc, context, response):
+def _handle_validation_error(exc, context, response):  # pylint: disable=unused-argument
     # if less than 3 fields failed, retrieve verbose multi response
     if len(response.data) <= 3:
         errors = extract_errors(response.data)
         return ValidationErrorResponse(errors=errors)
     # else, return generic response
-    else:
-        return BadRequestResponse(
-            err_message="Multiple errors in model. "
-            "Please check your request with the documentation specification"
-        )
+    return BadRequestResponse(
+        err_message="Multiple errors in model. "
+        "Please check your request with the documentation specification"
+    )
