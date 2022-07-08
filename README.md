@@ -3,18 +3,13 @@
 [![Breve Template](https://img.shields.io/badge/breve-template-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MCA3MCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNlMDAwNGQ7fS5jbHMtMntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5SZWN1cnNvIDFsb2dvIHBhcmEgcGVyZmlsIGRlIGNvcnJlbzwvdGl0bGU+PGcgaWQ9IkNhcGFfMiIgZGF0YS1uYW1lPSJDYXBhIDIiPjxnIGlkPSJDYXBhXzEtMiIgZGF0YS1uYW1lPSJDYXBhIDEiPjxyZWN0IGNsYXNzPSJjbHMtMSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjcwIi8+PHBhdGggaWQ9IlN1c3RyYWNjacOzbl8yIiBkYXRhLW5hbWU9IlN1c3RyYWNjacOzbiAyIiBjbGFzcz0iY2xzLTIiIGQ9Ik00Mi41LDU4YTE2LDE2LDAsMCwxLTYuMjUtMS4yN2wtLjY3LS4zdi04LjdIMjUuMzVWMTFIMzUuNThWMjcuMjlsLjY3LS4zYTE2LDE2LDAsMCwxLDE3LjYsMy40NiwxNi4xNywxNi4xNywwLDAsMS01LjEsMjYuMjdBMTYsMTYsMCwwLDEsNDIuNSw1OFptMC0yMi45NGE2LjgxLDYuODEsMCwxLDAsNi43Nyw2LjgzdjBBNi43OSw2Ljc5LDAsMCwwLDQyLjUsMzUuMDVaIi8+PHJlY3QgaWQ9IlJlY3TDoW5ndWxvXzEzIiBkYXRhLW5hbWU9IlJlY3TDoW5ndWxvIDEzIiBjbGFzcz0iY2xzLTIiIHg9IjExLjU2IiB5PSI0Ny43MiIgd2lkdGg9IjEwLjIzIiBoZWlnaHQ9IjEwLjI4Ii8+PC9nPjwvZz48L3N2Zz4=)](https://www.brevetech.com/)
 [![forthebadge made-with-python](https://img.shields.io/badge/made_with-python-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![forthebadge django-rest](https://img.shields.io/badge/django-rest_framework-a30000?style=for-the-badge&logo=django)](https://www.python.org/)
+[![forthebadge pre-commit](https://img.shields.io/badge/pre_commit-enabled-green?style=for-the-badge&logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![forthebadge pre-commit](https://img.shields.io/badge/uses-commitizen-E0004D?style=for-the-badge&logo=git)](https://github.com/commitizen-tools/commitizen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 ---
 
 A Django Rest Framework base template with custom configurations, intended to save time with some of the boilerplate configuration. Optmized for PyCharm IDE and VSCode.
-
-**For contribution**, base your branch in `develop`. Disable template features using the provided `toggle_template.py` script. This will find and replace the `py-tpl` strings `{{project_name}}` with simple strings `project_name` in all project files in order to allow it to run and test.
-
-```sh
-# "disable" replaces {{project_name}} with project_name, allowing code to run, "enable" discards the find and replace enabling the py-tpl features required to django project template
-python toggle_template.py <enable|disable>
-```
 
 ## Index
 
@@ -29,7 +24,10 @@ python toggle_template.py <enable|disable>
   - [OpenAPI 3 Schema Documentation](#openapi-3-schema-documentation)
   - [Authentication](#authentication)
   - [CORS Policy](#cors-policy)
-  - [Github Actions CI Workflow](#github-actions-ci-workflow)
+  - [pre-commit and QCA flow](#pre-commit-and-qca-flow)
+  - [Commitizen](#commitizen)
+  - [Github Actions CI/CD Workflow](#github-actions-cicd-workflow)
+  - [Contribution](#contribution)
 
 ## Features
 
@@ -47,24 +45,15 @@ python toggle_template.py <enable|disable>
 - JSON responses for 404 and 500 errors in non debug environment
 - Boilerplate abstract models (Timestamped and Person).
 - Heroku procfile default configuration
+- Log request middleware
 
 ## Getting started
 
-To use this template run the following command, `django` package is required globally:
+To use this template run the **install shell** provided in this project, `django` and `pipenv` packages are required globally. If you are in Windows, use `git bash`, Powershell script version is not implemented yet:
 
 ```sh
-# render as template all files with .py, .md .env .xml & .iml extension
-$ django-admin startproject \
-  --template=https://github.com/brevetech/breve_drf_template/archive/master.zip \
-  --name=Procfile \
-  --extension=py,md,env,xml,iml \
-  {project_name}
-$ cd {project_name}
-# enable .idea folder package for PyCharm
-$ mv idea .idea
-# enable .github folder for Github Actions workflows
-$ mv github .github
-$ pipenv install --dev
+# Execute install shell direct from repo
+$ bash <(curl -s https://raw.githubusercontent.com/brevetech/breve_drf_template/master/create_project.sh)
 ```
 
 This will start a new django project with the template structure. To run the project, you need to set up the `.env` file first.
@@ -89,7 +78,7 @@ PROD_DB_URL=<prod_db_url>
 
 To install a new package, run:
 
-```shell
+```sh
 # Install package
 $ pipenv install <package>
 ```
@@ -98,7 +87,7 @@ This will keep all requirements packages into the `Pipfile`, improving project c
 
 To remove a package, run:
 
-```shell
+```sh
 # Uninstall package
 $ pipenv uninstall <package>
 ```
@@ -124,7 +113,7 @@ After this, you can install the app in the `settings.base`, but using the full a
 
 This template uses a specific architecture based (kinda) on OOP languages **Clean Architecture**. This is to keep all business logic and validation code off the views code, having cleaner code and more modularization. The files implied here are:
 
-- Serializers:  defines all input and output objects for the endpoints. This serializers can be based on database models `ModelSerializer` or can be full custom serializer `Serializer`. If you want to use different serializers for input and output (e.g. create a join query for output that joins many models or have a different structure than the defined in the model for a create endpoint), you will need to use the `ReadWriteSerializerMixin`.
+- Serializers: defines all input and output objects for the endpoints. This serializers can be based on database models `ModelSerializer` or can be full custom serializer `Serializer`. If you want to use different serializers for input and output (e.g. create a join query for output that joins many models or have a different structure than the defined in the model for a create endpoint), you will need to use the `ReadWriteSerializerMixin`.
 - Views: defines all endpoints. You can use Function Based Views or Class Based Views (`APIView`, `ViewSet`, `ModelViewSet`).
 - Handlers: defines functions with all business logic and validations, database queries and database commands. Use a handler only if you need to redefine a complex logic for the endpoint, otherwise, check if `ModelViewSet` can help.
 - Entities: defines input and output objects for the handlers.
@@ -168,6 +157,35 @@ The `auth_create` endpoint, for getting an access and refresh token pair with a 
 
 This template uses `django-cors-headers` middleware for cors handling. The configuration is set up in `CORS_ORIGIN_ALLOW_ALL` key at `settings.base`, set `False` as default. Change it to `True` for development purposes when using SPA frontends and third party consumers.
 
-## Github Actions CI Workflow
+## pre-commit and QCA flow
 
-This template includes a basic Github Actions CI Workflow, toggled on develop branch (git flow) push and pull request. It's disabled by default; to enable it, go to `.github/workflows/ci.yml` and toggle comment in all file lines.
+This template integrates a full QCA flow using `pre-commit` hooks, that automates code quality tasks on every commit. Using this in your project from the beginning deletes the need to worry about issues as unattended warnings, code styles, etc, doing it automatically.
+
+The QCA flow integrates this hooks:
+
+- [`isort`](https://github.com/PyCQA/isort) for import sorting
+- [`black`](https://github.com/psf/black) for code formatting
+- [`autoflake`](https://github.com/PyCQA/autoflake) for unused imports and variables removal
+- [`pylint`](https://readthedocs.org/projects/pylint/) for Python complaint linting
+- `commitizen-check` for commit message structure checking
+
+If `pre-commit` is not working for you, try to run `pre-commit install` for installing the hooks. All the hooks configuration is in the `.pre-commit-config.yaml` file and every tool configuration is in its specified config file.
+
+## Commitizen
+
+This template also includes [`commitizen`](https://commitizen-tools.github.io/commitizen/) as a commit writing helper, following the [convetional commits](https://www.conventionalcommits.org/en/v1.0.0/) standards and making commits useful for release tasks. To use it, replace `git commit` command with `git cz commit`. All template specs and configurations are in `pyproject.toml` file.
+
+## Github Actions CI/CD Workflow
+
+This template includes a basic Github Actions CI Workflow, toggled on develop branch (git flow) push and pull request. It's disabled by default; to enable it, go to `.github/workflows/ci.yml` and toggle comment in all file lines. It also includes a CD workflow that simply bumps version tag, and makes a release with changelog, powered by **commitizen**.
+
+## Contribution
+
+**For contribution**, base your branch in `develop`. Disable template features using the provided `toggle_template.py` script. This will find and replace the `py-tpl` strings `{{project_name}}` with simple strings `project_name` in all project files in order to allow it to run and test.
+
+```sh
+# "disable" replaces {{project_name}} with project_name, allowing code to run, "enable" discards the find and replace enabling the py-tpl features required to django project template
+python toggle_template.py <enable|disable>
+```
+
+When you finished your changes, re-enable the template features with previous script, and then pull request to develop. **Pull requests won't be accepted if template features are not enabled**.
