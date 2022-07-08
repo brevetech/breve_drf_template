@@ -3,12 +3,11 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt import authentication
-
-from project_name.apps.employee.models import EmployeeModel
-from project_name.apps.employee.serializers import EmployeeSerializer
-from project_name.common.serializers import ErrorSerializer
-from project_name.common.utils import read_docs_md
-from project_name.paginators import DefaultPagination
+from {{project_name}}.apps.employee.models import EmployeeModel
+from {{project_name}}.apps.employee.serializers import EmployeeSerializer
+from {{project_name}}.common.serializers import ErrorSerializer
+from {{project_name}}.common.utils import read_docs_md
+from {{project_name}}.paginators import DefaultPagination
 
 
 # remember use method_decorator for detailed documentation

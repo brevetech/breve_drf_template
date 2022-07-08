@@ -1,7 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-
-from project_name.apps.core.views import LocationViewSet
+from {{project_name}}.apps.core.views import LocationViewSet
 
 router = routers.DefaultRouter()
 

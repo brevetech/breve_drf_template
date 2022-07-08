@@ -1,7 +1,7 @@
 from django.db import models
 
 # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add/1737078#1737078
-from project_name.common.enums import PersonSexEnum
+from {{project_name}}.common.enums import PersonSexEnum
 
 
 class TimeStampedModel(models.Model):

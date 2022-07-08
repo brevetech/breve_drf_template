@@ -1,4 +1,4 @@
-from project_name.settings.base import *  # pylint: disable=W0401, W0614, E0401
+from {{project_name}}.settings.base import *  # pylint: disable=W0401, W0614, E0401
 
 ALLOWED_HOSTS = ["localhost"]
 

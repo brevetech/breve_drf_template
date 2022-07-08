@@ -2,11 +2,10 @@ from django.utils.decorators import method_decorator
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets
 from rest_framework.response import Response
-
-from project_name.apps.core.handlers.list_locations import list_locations
-from project_name.apps.core.serializers import LocationSerializer
-from project_name.common.serializers import ErrorSerializer
-from project_name.common.utils import read_docs_md
+from {{project_name}}.apps.core.handlers.list_locations import list_locations
+from {{project_name}}.apps.core.serializers import LocationSerializer
+from {{project_name}}.common.serializers import ErrorSerializer
+from {{project_name}}.common.utils import read_docs_md
 
 # About Swagger method_decorator
 
